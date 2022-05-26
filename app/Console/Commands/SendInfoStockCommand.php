@@ -15,7 +15,7 @@ class SendInfoStockCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'stokBarang';
+    protected $signature = 'send:stok';
 
     /**
      * The console command description.
