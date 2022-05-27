@@ -49,7 +49,7 @@
                     url: '{{route('admin.kategori-barang.index')}}',
                 },
                 columns: [
-                    {data: 'name'},
+                    {data: 'nama'},
                     {data: 'kode'},
                     {
                         data: 'status', name: 'deleted_at', render: function (datum, type, row) {
