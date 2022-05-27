@@ -4,6 +4,7 @@
     <section class="content">
         <div class="row">
             <div class="col-12">
+                @include('layouts.flash')
                 <div class="card mt-4">
                     <div class="card-header">
                         <h3 class="card-title">Edit Kategori</h3>

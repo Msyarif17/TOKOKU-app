@@ -62,7 +62,6 @@ class KategoriController extends Controller
         
         $this->validate($request, [
             'nama' => 'required',
-            'kode' => 'required',
             
         ]);
     
