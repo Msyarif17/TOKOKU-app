@@ -24,7 +24,7 @@ class KategoriController extends Controller
                     return $kategori->kode;
                 })
                 ->addColumn('action', function (Kategori $kategori) {
-                    return \view('dashboard.kategori.button_action', compact('kategori'));
+                    return \view('dashboard.kategori-barang.button_action', compact('kategori'));
                 })
                 ->addColumn('status', function (Kategori $kategori) {
                     if ($kategori->deleted_at) {
@@ -36,7 +36,7 @@ class KategoriController extends Controller
                 ->rawColumns(['status', 'action'])
                 ->make(true);
         } else {
-            return view('dashboard.kategori.index');
+            return view('dashboard.kategori-barang.index');
 
         }
     }
@@ -48,7 +48,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('dashboard.kategori.create');
+        return view('dashboard.kategori-barang.create');
     }
     
     /**
@@ -86,7 +86,7 @@ class KategoriController extends Controller
     {
         
         $kategori = Kategori::find($id);
-        return view('dashboard.kategori.show',compact('user'));
+        return view('dashboard.kategori-barang.show',compact('user'));
     }
     
     /**
@@ -98,7 +98,7 @@ class KategoriController extends Controller
     public function edit($id)
     {
         $kategori = Kategori::find($id);
-        return view('dashboard.kategori.edit',compact('kategori'));
+        return view('dashboard.kategori-barang.edit',compact('kategori'));
     }
     
     /**
