@@ -32,6 +32,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
     Route::get('barang/{id}/tambah',[BarangController::class,'tambahStok'])->name('barang.tambahStok');
     Route::get('barang/{id}/kurangi',[BarangController::class,'kurangiStok'])->name('barang.kurangiStok');
+    Route::get('telegra-notification',[DashboardController::class,'telegram'])->name('telegram');
     Route::resource('barang', BarangController::class);
     Route::resource('kategori-barang', KategoriController::class);
     Route::resource('laporan', LaporanController::class);

@@ -7,6 +7,7 @@ use App\Models\Barang;
 use App\Models\Supplyer;
 use Illuminate\Http\Request;
 use App\Models\RiwayatPenjualan;
+use Illuminate\Support\Facades\Artisan;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 class DashboardController extends Controller
@@ -139,5 +140,10 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function telegram(){
+        Artisan::call('schedule:work');
+        return redirect()->route('admin.index')
+                        ->with('success','Notifikasi Stok via Telegram Baerhasil Diaktifkan');
     }
 }

@@ -272,7 +272,13 @@ return [
             'text' => 'Laporan',
             'icon' => 'fas fa-flag',
             'url' => '#'
+        ],
+        [
+            'text' => 'Aktifkan Notifikasi Telegram',
+            'icon' => 'fas fa-telegram',
+            'url' => 'admin/telegra-notification'
         ]
+        
         // Sidebar items:
         // [
         //     'type' => 'sidebar-menu-search',

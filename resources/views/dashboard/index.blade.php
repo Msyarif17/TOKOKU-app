@@ -9,7 +9,7 @@
 		<p>{!! $message !!}</p>
 	</div>
 	@endif
-        
+    @include('layouts.flash')    
     <div class="row">
 	
         <div class="col-md-4 col-sm-12 pb-4 box-size-1">

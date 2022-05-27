@@ -47,7 +47,7 @@ class LoginController extends Controller
        
         $tele = new TelegramBotController;
         $tele->loginInfo();
-        Artisan::call('schedule:work');
+        
         return '/admin';
     }
 }
