@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             Supplyer::create([
                 'nama'=>$faker->name(),
                 'alamat'=>$faker->address,
-                'nomor_telepon' => random_int(100000000000, 999999999999)
+                'nomor_telepon' => random_int(1000, 9999)
             ]);
         }
         // \App\Models\User::factory(10)->create();
