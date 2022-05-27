@@ -273,11 +273,11 @@ return [
             'icon' => 'fas fa-flag',
             'url' => '#'
         ],
-        [
-            'text' => 'Aktifkan Notifikasi Telegram',
-            'icon' => 'fab fa-telegram-plane',
-            'url' => 'admin/telegra-notification'
-        ]
+        // [
+        //     'text' => 'Aktifkan Notifikasi Telegram',
+        //     'icon' => 'fab fa-telegram-plane',
+        //     'url' => 'admin/telegra-notification'
+        // ]
         
         // Sidebar items:
         // [
