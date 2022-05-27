@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Kategori;
 use App\Models\Supplyer;
-use Faker\Generator as Faker;
+use Faker\Factory as Faker;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
