@@ -275,7 +275,7 @@ return [
         ],
         [
             'text' => 'Aktifkan Notifikasi Telegram',
-            'icon' => 'fas fa-telegram',
+            'icon' => 'fab fa-telegram-plane',
             'url' => 'admin/telegra-notification'
         ]
         
