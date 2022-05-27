@@ -18,7 +18,7 @@ class KategoriController extends Controller
         if ($request->ajax()) {
             return $datatables->of(Kategori::query()->withTrashed())
                 ->addColumn('nama', function (Kategori $kategori) {
-                    return $kategori->name;
+                    return $kategori->nama;
                 })
                 ->addColumn('kode', function (Kategori $kategori) {
                     return $kategori->kode;
