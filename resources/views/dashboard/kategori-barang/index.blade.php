@@ -7,9 +7,9 @@
             <div class="col-12">
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h3 class="card-title">Daftar Moderator</h3>
+                        <h3 class="card-title">Daftar Kategori</h3>
                         <div class="float-right">
-                            <a href="{{route('admin.manage-moderator.create')}}" class="btn btn-success btn-flat btn-sm"
+                            <a href="{{route('admin.kategori.create')}}" class="btn btn-success btn-flat btn-sm"
                                title="Tambah">Tambah</a>
                         </div>
                     </div>
@@ -20,7 +20,8 @@
                             <table id="data" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Nama Moderator</th>
+                                    <th>Nama</th>
+                                    <th>Kode</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -45,10 +46,11 @@
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
-                    url: '{{route('admin.manage-moderator.index')}}',
+                    url: '{{route('admin.kategori.index')}}',
                 },
                 columns: [
                     {data: 'name'},
+                    {data: 'kode'},
                     {
                         data: 'status', name: 'deleted_at', render: function (datum, type, row) {
                             if (row.status == 'Active') {

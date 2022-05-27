@@ -94,12 +94,12 @@ class BarangController extends Controller
         $input['id_supplyer'] = implode("",$request->id_supplyer);
         $id = 1;
         if(Barang::get()->count() != 0 || Barang::get()->count() != null){
-            $id = Barang::latest()->first()->id;
+            $id = Barang::latest()->first()->id+1;
         }
         $input['kode'] = (int)
         sprintf("%13s",$input['kategori_id']).
         sprintf("%03s",$input['id_supplyer']).
-        sprintf("%03s",$id+1);
+        sprintf("%03s",$id);
 
         $barang = Barang::create($input);
         
