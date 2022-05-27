@@ -72,7 +72,7 @@ class KategoriController extends Controller
         $kategori = Kategori::create($input);
         
         
-        return redirect()->route('admin.kategori.create')
+        return redirect()->route('admin.kategori-barang.create')
                         ->with('success','kategori berhasil ditambahkan');
     }
     
@@ -122,7 +122,7 @@ class KategoriController extends Controller
         $kategori->update($input);
         
     
-        return redirect()->route('admin.kategori.edit',$id)
+        return redirect()->route('admin.kategori-barang.edit',$id)
                         ->with('success','kategori updated successfully');
     }
     
@@ -135,7 +135,7 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         Kategori::find($id)->delete();
-        return redirect()->route('admin.kategori.index')
+        return redirect()->route('admin.kategori-barang.index')
                         ->with('success','kategori deleted successfully');
     }
     

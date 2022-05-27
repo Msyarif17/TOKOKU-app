@@ -9,8 +9,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => 'admin.kategori.store', 'method' => 'post', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
-                        @include('dashboard.kategori._form')
+                        {!! Form::open(['route' => 'admin.kategori-barang.store', 'method' => 'post', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        @include('dashboard.kategori-barang._form')
                         {!! Form::close() !!}
                     </div>
                     <!-- /.card-body -->

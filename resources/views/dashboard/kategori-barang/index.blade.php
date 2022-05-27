@@ -9,7 +9,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Daftar Kategori</h3>
                         <div class="float-right">
-                            <a href="{{route('admin.kategori.create')}}" class="btn btn-success btn-flat btn-sm"
+                            <a href="{{route('admin.kategori-barang.create')}}" class="btn btn-success btn-flat btn-sm"
                                title="Tambah">Tambah</a>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
-                    url: '{{route('admin.kategori.index')}}',
+                    url: '{{route('admin.kategori-barang.index')}}',
                 },
                 columns: [
                     {data: 'name'},
