@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Kategori;
 use App\Models\Supplyer;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Faker\Factory as Faker;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,8 +18,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Kategori::factory(10)->create();
-        Supplyer::factory(10)->create();
+        $faker = Faker::create('id_ID');
+        for($i = 1; $i<=10;$i++){
+            Kategori::create([
+                'nama'=>$faker->name(),
+                'kode' =>Str::random(2)
+            ]);
+        }
+        for($i = 1; $i<=10;$i++){
+            Supplyer::create([
+                'nama'=>$this->faker->name(),
+                'alamat'=>$this->faker->address,
+                'nomor_telepon' => random_int(100000000000, 999999999999)
+            ]);
+        }
         // \App\Models\User::factory(10)->create();
     }
 }
