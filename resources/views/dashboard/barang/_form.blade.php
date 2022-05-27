@@ -59,7 +59,7 @@
             <div class="col-sm-12 col-md-12">
                 <div class="form-group">
                     {!! Form::label('discount', 'Discount') !!}
-                    {!! Form::select('discount[]', $discount,array($barang->discount), array('class' => 'form-control')) !!}
+                    {!! Form::select('discount[]', $discount,[], array('class' => 'form-control')) !!}
                     {!! $errors->first('discount', '<p class="help-block invalid-feedback">:message</p>') !!} 
                 </div>
             </div>
