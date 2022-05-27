@@ -99,7 +99,7 @@ class BarangController extends Controller
         $input['kode'] = (int)
         sprintf("%13s",$input['kategori_id']).
         sprintf("%03s",$input['id_supplyer']).
-        sprintf("%03s",$id);
+        sprintf("%03s",$id+1);
 
         $barang = Barang::create($input);
         
