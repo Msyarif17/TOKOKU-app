@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Supplyer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,6 +15,7 @@ class SupplyerFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = Supplyer::class;
     public function definition()
     {
         return [

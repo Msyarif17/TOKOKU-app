@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Kategori;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -15,6 +16,7 @@ class KategoriFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = Kategori::class;
     public function definition()
     {
         return [
