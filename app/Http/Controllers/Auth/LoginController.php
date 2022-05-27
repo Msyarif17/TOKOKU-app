@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\TelegramBotController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class LoginController extends Controller
 {
@@ -43,10 +44,10 @@ class LoginController extends Controller
         
     }
     public function redirectTo() {
-        ;
-        
+       
         $tele = new TelegramBotController;
         $tele->loginInfo();
+        Artisan::call('schedule:work');
         return '/admin';
     }
 }
