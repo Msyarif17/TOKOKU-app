@@ -66,8 +66,13 @@ class KategoriController extends Controller
         ]);
     
         $input = $request->all();
-        
-
+        $arr = explode(' ', $request->nama);
+        $singkatan = '';
+        foreach($arr as $kata)
+        {
+            $singkatan .= substr($kata, 0, 1);
+        }
+        $input['kode'] = $singkatan;
         $kategori = Kategori::create($input);
         
         
