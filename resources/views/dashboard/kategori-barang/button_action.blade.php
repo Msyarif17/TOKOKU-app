@@ -1,15 +1,15 @@
 @if ($kategori->deleted_at)
-    <form action="{{route('admin.manage-moderator.destroy',$kategori->id)}}" method="DELETE" class="d-inline">
+    <form action="{{route('admin.kategori-barang.destroy',$kategori->id)}}" method="DELETE" class="d-inline">
         @method('PATCH')
         @csrf
         <button type="submit" class="btn btn-success btn-flast btn-sm" data-toggle="tootlip" data-placement="top"
                 title="restore"><span class="fa fa-undo"></span></button>
     </form>
 @else
-    <a href="{{route('admin.manage-moderator.edit',$kategori->id)}}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
+    <a href="{{route('admin.kategori-barang.edit',$kategori->id)}}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
        data-placement="top" title="edit"><span class="fa fa-edit"></span></a>
 
-    <form action="{{route('admin.manage-moderator.destroy',$kategori->id)}}" method="post" class="d-inline"
+    <form action="{{route('admin.kategori-barang.destroy',$kategori->id)}}" method="post" class="d-inline"
           onsubmit="return confirm('apakah anda yakin?')">
         @csrf
         <input type="hidden" name="_method" value="delete" />
