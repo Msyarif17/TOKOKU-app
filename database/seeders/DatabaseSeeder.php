@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
         }
         for($i = 1; $i<=10;$i++){
             Supplyer::create([
-                'nama'=>$this->faker->name(),
-                'alamat'=>$this->faker->address,
+                'nama'=>$faker->name(),
+                'alamat'=>$faker->address,
                 'nomor_telepon' => random_int(100000000000, 999999999999)
             ]);
         }
