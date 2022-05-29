@@ -8,9 +8,9 @@
                 @include('layouts.flash')
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h3 class="card-title">Daftar Kategori</h3>
+                        <h3 class="card-title">Daftar Supplyer</h3>
                         <div class="float-right">
-                            <a href="{{route('admin.kategori-barang.create')}}" class="btn btn-success btn-flat btn-sm"
+                            <a href="{{route('admin.supplyer.create')}}" class="btn btn-success btn-flat btn-sm"
                                title="Tambah">Tambah</a>
                         </div>
                     </div>
@@ -22,7 +22,8 @@
                                 <thead>
                                 <tr>
                                     <th>Nama</th>
-                                    <th>Kode</th>
+                                    <th>Alamat</th>
+                                    <th>Nomor Telepon</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -47,11 +48,12 @@
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
-                    url: '{{route('admin.kategori-barang.index')}}',
+                    url: '{{route('admin.supplyer.index')}}',
                 },
                 columns: [
                     {data: 'nama'},
-                    {data: 'kode'},
+                    {data: 'alamat'},
+                    {data: 'nomor_telepon'},
                     {
                         data: 'status', name: 'deleted_at', render: function (datum, type, row) {
                             if (row.status == 'Active') {

@@ -102,7 +102,7 @@
 						</div>
 						<div class="text-right" style="margin-top: -20px;">
 							
-							<i class="fa fa-users logo-dashboard" aria-hidden="true"></i>
+							<i class="fa fa-file logo-dashboard" aria-hidden="true"></i>
 						</div>
 
 					</div>

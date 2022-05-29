@@ -239,13 +239,13 @@ return [
         
         [
             'text' => 'Aplikasi Penjualan',
-            'icon' => 'fas fa-flag',
+            'icon' => 'fa fa-television',
             'url' => '#'
         ],
         
         [
             'text' => 'Aplikasi Barang Masuk',
-            'icon' => 'fas fa-flag',
+            'icon' => 'fa fa-television',
             'url' => '#'
         ],
         [
