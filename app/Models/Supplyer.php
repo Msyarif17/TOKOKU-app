@@ -13,6 +13,6 @@ class Supplyer extends Model
     protected $table = 'supplyers';
     protected $fillable = ['nama','alamat','nomor_telepon'];
     public function barang(){
-        return $this->hasMany(Barang::class,'id_supplyer');
+        return $this->hasMany(Barang::class,'id_supplyer'); 
     }
 }
