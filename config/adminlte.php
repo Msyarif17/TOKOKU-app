@@ -236,9 +236,17 @@ return [
             'topnav_right' => true,
         ],
 
+        
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Aplikasi Penjualan',
+            'icon' => 'fas fa-flag',
+            'url' => '#'
+        ],
+        
+        [
+            'text' => 'Aplikasi Barang Masuk',
+            'icon' => 'fas fa-flag',
+            'url' => '#'
         ],
         [
             'text' => 'Barang',
@@ -246,6 +254,10 @@ return [
             'submenu' =>  [
                     [
                         'text' => 'Kategori Barang',
+                        'url'  => 'admin/kategori-barang',
+                    ],
+                    [
+                        'text' => 'Supplyer',
                         'url'  => 'admin/kategori-barang',
                     ],
                     [
@@ -270,6 +282,11 @@ return [
         ],
         [
             'text' => 'Laporan',
+            'icon' => 'fas fa-flag',
+            'url' => '#'
+        ],
+        [
+            'text' => 'Admin',
             'icon' => 'fas fa-flag',
             'url' => '#'
         ],
