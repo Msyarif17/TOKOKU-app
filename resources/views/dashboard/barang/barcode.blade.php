@@ -1,1 +1,1 @@
-<img src="{{'data:image/png;base64,' . DNS1D::getBarcodePNG($barang->kode, 'UPCA'))}}" alt="barcode {{$barang->nama}}">
+<img src="{{'data:image/png;base64,' . DNS1D::getBarcodePNG($barang->kode, 'UPCA')}}" alt="barcode {{$barang->nama}}">
