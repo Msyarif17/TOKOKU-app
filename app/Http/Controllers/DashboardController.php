@@ -52,8 +52,7 @@ class DashboardController extends Controller
         
         $stock = Barang::where('stok','<=',2)->get();
         $expire = Barang::
-        whereDate('kadaluarsa','<',Carbon::now()->setTimezone('Asia/Jakarta')->addDay(3)->isoFormat('Y-m-d'))
-        ->get();
+        whereDate('kadaluarsa','<',date('Y-m-d'))->get();
         
         $message = array();
         if($stock != null){
