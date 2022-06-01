@@ -105,12 +105,10 @@ class DashboardController extends Controller
         }
         // bulanan 
         if($rentang == 3){
-            $b = RiwayatPenjualan::select(
-                DB::raw("(sum(laba)) as laba"),
-                )
-                ->orderBy('created_at')
-                ->groupBy(DB::raw("date_part('month', created_at)"))
-                ->get();
+            $b = RiwayatPenjualan::whereYear('created_at', now()->year)
+            ->selectRaw("SUM(laba) as laba, date_part('month',created_at) as name, date_part('year',created_at) as year")
+            ->groupBy('name', 'year')
+            ->orderBy('name', 'asc')->get();
             $bu = array();
             foreach($b as $f){
                 array_push($bu,$f->laba);
