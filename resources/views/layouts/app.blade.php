@@ -79,5 +79,46 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        $('.datepicker').daterangepicker({
+            //autoclose: true,
+            "singleDatePicker": true,
+            locale: {
+                format: 'YYYY-MM-DD HH:mm:SS',
+            },
+            timePicker: true,
+            minDate: "-7d"
+        });
+        $('.datepicker-no-limit').daterangepicker({
+            //autoclose: true,
+            "singleDatePicker": true,
+            locale: {
+                format: 'YYYY-MM-DD',
+            }
+        });
+        $('.datetimepicker-no-limit').daterangepicker({
+            //autoclose: true,
+            "singleDatePicker": true,
+            locale: {
+                format: 'YYYY-MM-DD hh:ii',
+            },
+            timePicker: true
+
+        });
+        $('.datetimepicker').daterangepicker({
+            //autoclose: true,
+            "singleDatePicker": true,
+            locale: {
+                format: 'YYYY-MM-DD hh:ii',
+            },
+            timePicker: true,
+            startDate: "-7d"
+
+        });
+
+        $(".delete").on('click', function() {
+            return confirm('Are You Sure ?')
+        });
+    </script>
 </body>
 </html>

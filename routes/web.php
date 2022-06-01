@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AplikasiBarangMasukController;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SupplyerController;
 use Illuminate\Routing\Route as RoutingRoute;
 use App\Http\Controllers\TelegramBotController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,9 @@ Route::get('/cek',[TelegramBotController::class,'alertForStock']);
 Route::get('/', function(){
     return redirect()->route('admin.home');
 });
-Auth::routes();
+Auth::routes([
+    'register' => false
+]);
 
 
 
@@ -36,8 +40,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('barang/{id}/tambah',[BarangController::class,'tambahStok'])->name('barang.tambahStok');
     Route::get('barang/{id}/kurangi',[BarangController::class,'kurangiStok'])->name('barang.kurangiStok');
     Route::get('telegra-notification',[DashboardController::class,'telegram'])->name('telegram');
-    
-    Route::resource('supplyer',[SupplyerController::class]);
+    Route::get('penghasilan/{rentang?}',[DashboardController::class,'penghasilan'])->name('penghasilan');
+    Route::resource('aplikasi-barang-masuk',AplikasiBarangMasukController::class);
+    Route::resource('supplyer',SupplyerController::class);
     Route::resource('barang', BarangController::class);
     Route::resource('kategori-barang', KategoriController::class);
     Route::resource('laporan', LaporanController::class);

@@ -16,7 +16,7 @@ class SupplyerController extends Controller
     public function index(Datatables $datatables, Request $request)
     {
         if ($request->ajax()) {
-            return $datatables->of(Supplyer::query()->withTrashed())
+            return $datatables->of(Supplyer::query()->latest()->withTrashed())
                 ->addColumn('nama', function (Supplyer $supplyer) {
                     return $supplyer->nama;
                 })

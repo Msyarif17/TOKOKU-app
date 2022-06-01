@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>TOKO</b>KU',
-    'logo_img' => 'img/logotokobaru.svg',
+    'logo_img' => 'img/logotokobaru.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -239,14 +239,14 @@ return [
         
         [
             'text' => 'Aplikasi Penjualan',
-            'icon' => 'fa fa-television',
+            'icon' => 'fas fa-tv',
             'url' => '#'
         ],
         
         [
             'text' => 'Aplikasi Barang Masuk',
-            'icon' => 'fa fa-television',
-            'url' => '#'
+            'icon' => 'fas fa-tv',
+            'url' => 'admin/aplikasi-barang-masuk'
         ],
         [
             'text' => 'Barang',
@@ -258,7 +258,7 @@ return [
                     ],
                     [
                         'text' => 'Supplyer',
-                        'url'  => 'admin/kategori-barang',
+                        'url'  => 'admin/supplyer',
                     ],
                     [
                         'text' => 'Barang',
@@ -282,19 +282,19 @@ return [
         ],
         [
             'text' => 'Laporan',
-            'icon' => 'fas fa-flag',
+            'icon' => 'fas fa-file',
             'url' => '#'
         ],
         [
             'text' => 'Admin',
-            'icon' => 'fas fa-flag',
+            'icon' => 'fas fa-users',
             'url' => '#'
         ],
-        // [
-        //     'text' => 'Aktifkan Notifikasi Telegram',
-        //     'icon' => 'fab fa-telegram-plane',
-        //     'url' => 'admin/telegra-notification'
-        // ]
+        [
+            'text' => 'Aktifkan Notifikasi Telegram',
+            'icon' => 'fab fa-telegram-plane',
+            'url' => 'admin/telegra-notification'
+        ]
         
         // Sidebar items:
         // [
@@ -451,11 +451,11 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
                 ],
             ],
@@ -482,6 +482,27 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        
+        'DateRangePicker' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '/vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '/vendor/daterangepicker/daterangepicker.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '/vendor/daterangepicker/daterangepicker.css',
                 ],
             ],
         ],

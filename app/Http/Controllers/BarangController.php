@@ -4,26 +4,26 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Supplyer;
+use Milon\Barcode\DNS1D;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class BarangController extends Controller
 {
     public function index(Datatables $datatables, Request $request)
     {
         if ($request->ajax()) {
-            return $datatables->of(Barang::query()->withTrashed())
+            return $datatables->of(Barang::query()->latest()->withTrashed())
                 ->addColumn('name', function (Barang $barang) {
                     return $barang->name;
                 })
+                ->addColumn('barcode_img', function (Barang $barang) {
+                    return \view('dashboard.barang.barcode', compact('barang'));
+                })
                 ->addColumn('hargaEcer', function (Barang $barang) {
                     return $barang->harga_beli_satuan;
-                })
-                ->addColumn('hargaBeli', function (Barang $barang) {
-                    return $barang->harga_jual_satuan;
-                })
-                ->addColumn('kadaluarsa', function (Barang $barang) {
-                    return $barang->kadaluarsa == null ? '-':$barang->kadaluarsa;
                 })
                 ->addColumn('stok', function (Barang $barang) {
                     return \view('dashboard.barang.button_stok_action', compact('barang'));
@@ -84,24 +84,38 @@ class BarangController extends Controller
             'kategori_id'=> 'required',
             'harga_beli_satuan' => 'required',
             'harga_jual_satuan' => 'required' ,
-            'stok'=> 'required'
+            'stok'=> 'required',
             
         ]);
     
         $input = $request->all();
+
         $input['discount'] = json_encode(array($request->discount));
+
         $input['kategori_id'] = implode("",$request->kategori_id);
+
         $input['id_supplyer'] = implode("",$request->id_supplyer);
+
         $id = 1;
+
         if(Barang::get()->count() != 0 || Barang::get()->count() != null){
             $id = Barang::latest()->first()->id+1;
         }
+
         $input['kode'] = (int)
         sprintf("%13s",$input['kategori_id']).
         sprintf("%03s",$input['id_supplyer']).
         sprintf("%03s",$id);
 
-        $barang = Barang::create($input);
+        $br = new DNS1D;
+
+        $barcode =$br->getBarcodePNG($input['kode'], 'UPCA');
+
+        Storage::disk('image')->put('barcode-'.str($input['kode']).'.png',base64_decode($br->getBarcodePNG($input['kode'], 'UPCA')));
+        
+        $input['barcode_img'] = 'image/barcode-'.str($input['kode']).'.png';
+
+        Barang::create($input);
         
         
         return redirect()->route('admin.barang.create')

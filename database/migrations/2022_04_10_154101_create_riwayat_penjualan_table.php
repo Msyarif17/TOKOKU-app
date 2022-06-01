@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedInteger('jumlah_barang');
             $table->decimal('total');
             // laba didapat dari (harga jual - harga beli)*jumlah barang
-            $table->decimal('laba');
+            $table->unsignedBigInteger('laba');
             $table->string('tx_id')->unique();
             $table->timestamps();
         });

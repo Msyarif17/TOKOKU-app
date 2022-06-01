@@ -3,15 +3,62 @@
 
 
 <section class="content pt-4">
-    @if ($message != '')
+    @if (count($message) !=0)
+	@foreach ($message as $m)
 	<div class="alert alert-warning alert-block">
 		<button type="button" class="close" data-dismiss="alert">×</button>    
-		<p>{!! $message !!}</p>
+		<p>{!! $m !!}</p>
 	</div>
-	@endif
-    @include('layouts.flash')    
-    <div class="row">
+	@endforeach
 	
+	@endif
+    @include('layouts.flash') 
+	<div class="row">
+		<div class="col-md-4 col-sm-12 pb-4 box-size-1">
+			<div class="card card-primary">
+				<div class="card-header">
+					<div class="card-title">
+						Laba Bersih Harian
+					</div>
+				</div>
+				
+				<div class="card-body p-0">
+					<div class="chart">
+						<canvas id="harian" ></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-12 pb-4 box-size-1">
+			<div class="card card-warning">
+				<div class="card-header">
+					<div class="card-title">
+						Laba Bersih Mingguan
+					</div>
+				</div>
+				<div class="card-body p-0">
+					<div class="chart">
+						<canvas id="mingguan" ></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-12 pb-4 box-size-1">
+			<div class="card card-success">
+				<div class="card-header">
+					<div class="card-title">
+						Laba Bersih Bulanan
+					</div>
+				</div>
+				<div class="card-body p-0">
+					<div class="chart">
+						<canvas id="bulanan" ></canvas>
+					</div>
+				</div>
+			</div>
+		</div></div>   
+    <div class="row">
+		
         <div class="col-md-4 col-sm-12 pb-4 box-size-1">
 			<a href="#">
 				<div class="card bg-warning text-light border-0  overflow-hidden shadow">
@@ -151,3 +198,112 @@
     </div>
 </section>
 @stop
+@push('js')
+	<script>
+const harian = document.getElementById('harian').getContext('2d');
+const mingguan = document.getElementById('mingguan').getContext('2d');
+const bulanan = document.getElementById('bulanan').getContext('2d');
+const harianC = new Chart(harian, {
+    type: 'line',
+    data: {
+        labels: {!!$chart['label'][0]!!},
+        datasets: [{
+            label: 'Penghasilan Harian',
+			data: {!!$chart['data'][0]!!},
+                  backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+const mingguanC = new Chart(mingguan, {
+    type: 'line',
+    data: {
+        labels: {!!$chart['label'][1]!!},
+        datasets: [{
+            label: 'Penghasilan Mingguan',
+			data: {!!$chart['data'][1]!!},
+                  backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+const bulananC = new Chart(bulanan, {
+    type: 'line',
+    data: {
+        labels: {!!$chart['label'][2]!!},
+        datasets: [{
+            label: 'Penghasilan Bulanan',
+			data: {!!$chart['data'][2]!!},
+                  backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+	</script>
+@endpush

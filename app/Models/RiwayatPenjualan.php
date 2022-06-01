@@ -9,7 +9,7 @@ class RiwayatPenjualan extends Model
 {
     use HasFactory;
     protected $table = 'riwayat_penjualan';
-    protected $fillable = ['id_barang','harga','jumlah_barang','total','tx_id'];
+    protected $fillable = ['id_barang','harga','jumlah_barang','total','laba','tx_id'];
     public function barang(){
         return $this->belongsTo(Barang::class);
     }

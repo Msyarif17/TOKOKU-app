@@ -10,7 +10,13 @@
                         <h3 class="card-title">Daftar Stok Barang</h3>
                         <div class="float-right">
                             <a href="{{route('admin.barang.create')}}" class="btn btn-success btn-flat btn-sm"
-                               title="Tambah">Tambah</a>
+                               title="Tambah"><i class="fa fa-plus"></i> Tambah Barang</a>
+                            <a href="{{route('admin.barang.create')}}" class="btn btn-primary btn-flat btn-sm"
+                               title="Tambah"><i class="fa fa-barcode"></i> Scan Barcode</a>
+                            <a href="{{route('admin.barang.create')}}" class="btn btn-warning btn-flat btn-sm"
+                               title="Tambah"><i class="fa fa-print"></i> Print Semua Barcode</a>
+                            <a href="{{route('admin.barang.create')}}" class="btn btn-dark btn-flat btn-sm"
+                               title="Tambah"><i class="fa fa-print"></i> Print Semua Data</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -21,9 +27,8 @@
                                 <thead>
                                 <tr>
                                     <th>Nama </th>
+                                    <th>Barcode</th>
                                     <th>Harga Eceran</th>
-                                    <th>Harga Beli</th>
-                                    <th>Tanggal Kadaluarsa</th>
                                     <th>Stok</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
@@ -53,10 +58,10 @@
                 },
                 columns: [
                     {data: 'nama'},
+                    {data: 'barcode_img'},
                     {data: 'hargaEcer'},
-                    {data: 'hargaBeli'},
-                    {data: 'kadaluarsa'},
                     {data: 'stok'},
+                    
                     {
                         data: 'status', name: 'deleted_at', render: function (datum, type, row) {
                             if (row.status == 'Active') {

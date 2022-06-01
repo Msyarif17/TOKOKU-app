@@ -19,7 +19,7 @@ class Barang extends Model
     protected $fillable = [
         'kode','id_supplyer','nama','kategori_id',
         'harga_beli_satuan','harga_jual_satuan',
-        'kadaluarsa','discount','stok'
+        'kadaluarsa','discount','stok','barcode_img','img'
     ];
     
     public function discount(){

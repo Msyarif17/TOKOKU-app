@@ -1,0 +1,1 @@
+<img src="{{asset('storage/'.$barang->barcode_img)}}" alt="barcode {{$barang->nama}}">

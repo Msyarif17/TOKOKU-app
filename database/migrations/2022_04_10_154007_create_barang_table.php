@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('id_supplyer')->references('id')->on('supplyers');
             $table->string('nama');
             $table->decimal('harga_beli_satuan')->unsigned();
-            $table->decimal('harga_jual_satuan')->unsigned();
+            $table->decimal('harga_jual_satuan')->unsigned()->nullable();
             $table->timestamp('kadaluarsa')->nullable();
             $table->json('discount');
             $table->integer('stok')->default(0)->unsigned();

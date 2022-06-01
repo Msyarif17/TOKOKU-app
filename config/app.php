@@ -169,6 +169,7 @@ return [
          */
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
+        Milon\Barcode\BarcodeServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -193,6 +194,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Telegram' => Telegram\Bot\Laravel\Facades\Telegram::class,
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
     ])->toArray(),
 
 ];

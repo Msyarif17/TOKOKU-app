@@ -7,6 +7,14 @@
         <div class="col-sm-6 col-md-6">
             <div class="col-sm-12 col-md-12">
                 <div class="form-group">
+                    {!! Form::label('image', 'Gambar Produk*') !!}
+                    {!! Form::file('image', $errors->has('image') ? ['class'=>'form-control is-invalid','accept'=>"image/*"] : ['class'=>'form-control','accept'=>"image/png, image/*"]) !!}
+                    {!! $errors->first('image', '<p class="help-block invalid-feedback">:message</p>') !!}
+                    
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <div class="form-group">
                     {!! Form::label('id_supplyer', 'supplyer') !!}
                     {!! Form::select('id_supplyer[]', $supplyer,[], array('class' => 'form-control')) !!}
                     {!! $errors->first('id_supplyer', '<p class="help-block invalid-feedback">:message</p>') !!} 
@@ -52,14 +60,14 @@
             <div class="col-sm-12 col-md-12">
                 <div class="form-group">
                     {!! Form::label('kadaluarsa', 'Kadaluarsa') !!}
-                    {!! Form::text('kadaluarsa', @$barang->kadaluarsa, $errors->has('kadaluarsa') ? ['class' => 'form-control is-invalid'] : ['class' => 'form-control']) !!}
+                    {!! Form::text('kadaluarsa', @$barang->kadaluarsa, $errors->has('kadaluarsa') ? ['class' => 'form-control is-invalid'] : ['class' => 'form-control datepicker']) !!}
                     {!! $errors->first('kadaluarsa', '<p class="help-block invalid-feedback">:message</p>') !!}
                 </div>
             </div>
             <div class="col-sm-12 col-md-12">
                 <div class="form-group">
                     {!! Form::label('discount', 'Discount') !!}
-                    {!! Form::select('discount[]', $discount,[], array('class' => 'form-control')) !!}
+                    {!! Form::select('discount[]', $discount,[], array('class' => 'form-control','multiple')) !!}
                     {!! $errors->first('discount', '<p class="help-block invalid-feedback">:message</p>') !!} 
                 </div>
             </div>
