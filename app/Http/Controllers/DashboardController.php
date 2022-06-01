@@ -109,8 +109,7 @@ class DashboardController extends Controller
                 DB::raw("(sum(laba)) as laba"),
                 )
                 ->orderBy('created_at')
-                ->whereYear('created_at', now()->year)
-                // ->groupBy(DB::raw("date_part('month', created_at)"))
+                ->groupBy(DB::raw("date_part('month', created_at)"))
                 ->get();
             $bu = array();
             foreach($b as $f){
