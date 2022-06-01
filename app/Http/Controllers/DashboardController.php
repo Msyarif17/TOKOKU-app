@@ -106,14 +106,19 @@ class DashboardController extends Controller
         // bulanan 
         if($rentang == 3){
             $b = RiwayatPenjualan::whereYear('created_at', now()->year)
-            ->selectRaw("SUM(laba) as laba, date_part('month',created_at) as name, date_part('year',created_at) as year")
-            ->groupBy('name', 'year')
-            ->orderBy('name', 'asc')->get();
+            ->selectRaw("SUM(laba) as laba, date_part('month',created_at) as month, date_part('year',created_at) as year")
+            ->groupBy('month', 'year')
+            ->orderBy('month', 'asc')->get();
             $bu = array();
             foreach($b as $f){
                 array_push($bu,$f->laba);
             }
-            return json_encode($bu);
+            if($b->count() != 0){
+                return json_encode($bu);
+            }
+            else{
+                return json_encode([0]);
+            }
         }      
     }
     private function getDayName(){
