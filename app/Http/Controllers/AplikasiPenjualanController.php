@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AplikasiPenjualanController extends Controller
 {
@@ -15,9 +16,9 @@ class AplikasiPenjualanController extends Controller
      */
     public function index()
     {
-        $kategori = Kategori::get();
-        $barang = Barang::get();
-        return view('dashboard.penjualan.index');
+        $kategori = Kategori::pluck('nama','id')->all();
+        $barang = Barang::pluck('nama','id')->all();
+        return view('dashboard.penjualan.index',compact('kategori','barang'));
     }
 
     /**
@@ -39,37 +40,15 @@ class AplikasiPenjualanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id_barang' => 'required',
-            'harga' => 'required',
-            'kategori_id'=> 'required',
-            'harga_beli_satuan' => 'required',
-            'harga_jual_satuan' => 'required' ,
-            'stok'=> 'required',
+            'barang_id',
+            'jumlah_barang',
+            'is_discount'
             
         ]);
     
         $input = $request->all();
         
-        $image = $request->file('image');
-        $image->storeAs('public/image/', 'img-'.$image->hashName());
-        $input['img'] = '/image/img-'.$image->hashName();
-        $input['discount'] = json_encode($request->discount);
-        $input['kategori_id'] = implode("",$request->kategori_id);
-        $input['id_supplyer'] = implode("",$request->id_supplyer);
-        $id = 1;
-        if(Barang::get()->count() != 0 || Barang::get()->count() != null){
-            $id = Barang::latest()->first()->id+1;
-        }
-        $input['kode'] = (int)
-        sprintf("%13s",$input['kategori_id']).
-        sprintf("%03s",$input['id_supplyer']).
-        sprintf("%03s",$id);
-        $br = new DNS1D;
-        $barcode =$br->getBarcodePNG($input['kode'], 'UPCA');
-
-        Storage::disk('image')->put('barcode-'.str($input['kode']).'.png',base64_decode($br->getBarcodePNG($input['kode'], 'UPCA')));
         
-        $input['barcode_img'] = 'image/barcode-'.str($input['kode']).'.png';
 
         $barang = Barang::create($input);
         
@@ -121,5 +100,32 @@ class AplikasiPenjualanController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function getDetail($id){
+        $getBarang = Barang::where('kategori_id',$id)->get();
+        Log::info($getBarang);
+        return response()->json(['data' => $getBarang]);
+    }
+    public function getDiscount($id){
+        $getDiscount = Barang::where('id',$id)->first();
+        $tmp = array();
+        foreach(json_decode( $getDiscount->discount) as $d){
+            array_push($tmp,implode("+",$d));
+        }
+        
+        $getDiscount->discount =implode("+",$tmp);
+        
+        return response()->json(['data' => $getDiscount]);
+
+    }
+    public function datalist($kode){
+        $datalist = Barang::where('kode',$kode)->first();
+        $tmp = array();
+        foreach(json_decode( $datalist->discount) as $d){
+            array_push($tmp,implode("+",$d));
+        }
+        
+        $datalist->discount =implode("+",$tmp);
+        return response()->json(['data' => $datalist]);
     }
 }

@@ -88,7 +88,7 @@ class DashboardController extends Controller
         
         return redirect()->route('admin.index')->with('success','Notifikasi Stok via Telegram Baerhasil Diaktifkan');
     }
-   private function penghasilan($rentang)
+    private function penghasilan($rentang)
     {
         //harian
         if($rentang == 1){
@@ -106,7 +106,7 @@ class DashboardController extends Controller
         // bulanan 
         if($rentang == 3){
             $b = RiwayatPenjualan::whereYear('created_at', now()->year)
-            ->selectRaw("SUM(laba) as laba, date_part('month',created_at) as month, date_part('year',created_at) as year")
+            ->selectRaw("SUM(laba) as laba,MONTH(created_at) as month, YEAR(created_at) as year")
             ->groupBy('month', 'year')
             ->orderBy('month', 'asc')->get();
             $bu = array();

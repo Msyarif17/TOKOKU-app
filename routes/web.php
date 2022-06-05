@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AplikasiBarangMasukController;
+use App\Http\Controllers\AplikasiPenjualanController;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,10 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('barang/{id}/kurangi',[BarangController::class,'kurangiStok'])->name('barang.kurangiStok');
     Route::get('telegra-notification',[DashboardController::class,'telegram'])->name('telegram');
     Route::get('penghasilan/{rentang?}',[DashboardController::class,'penghasilan'])->name('penghasilan');
+    Route::get('getDetails/{id}',[AplikasiPenjualanController::class,'getDetail'])->name('getDetails');
+    Route::get('getDiscount/{id}',[AplikasiPenjualanController::class,'getDiscount'])->name('getDiscount');
+    Route::get('getDatalist/{kode}',[AplikasiPenjualanController::class,'datalist'])->name('datalist');
+    Route::resource('aplikasi-penjualan',AplikasiPenjualanController::class);
     Route::resource('aplikasi-barang-masuk',AplikasiBarangMasukController::class);
     Route::resource('supplyer',SupplyerController::class);
     Route::resource('barang', BarangController::class);

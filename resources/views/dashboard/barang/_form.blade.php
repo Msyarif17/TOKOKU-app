@@ -1,9 +1,5 @@
 <div class="box-body">
     <div class="row">
-        
-            
-           
-        
         <div class="col-sm-6 col-md-6">
             <div class="col-sm-12 col-md-12">
                 <div class="form-group">
@@ -77,5 +73,5 @@
 <!-- /.box-body -->
 
 <div class="box-footer">
-    {!! Form::submit(isset($moderator) ? 'Update' : 'Save', ['class' => 'btn btn-primary btn-block', 'id' => 'save']) !!}
+    {!! Form::submit(isset($barang) ? 'Update' : 'Save', ['class' => 'btn btn-primary btn-block', 'id' => 'save']) !!}
 </div>

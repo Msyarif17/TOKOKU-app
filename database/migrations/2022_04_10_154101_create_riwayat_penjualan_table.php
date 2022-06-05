@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\DetailPenjualan;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,13 +16,13 @@ return new class extends Migration
     {
         Schema::create('riwayat_penjualan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_barang');
-            $table->foreign('id_barang')->references('id')->on('barang');
-            $table->decimal('harga')->unsigned();
-            $table->unsignedInteger('jumlah_barang');
-            $table->decimal('total');
+            $table->unsignedInteger('jumlah_barang')->nullable();
+            $table->decimal('total')->nullable();
             // laba didapat dari (harga jual - harga beli)*jumlah barang
-            $table->unsignedBigInteger('laba');
+            $table->unsignedBigInteger('laba')->nullable();
+            $table->string('alamat');
+            $table->string('nama_penerima');
+            $table->string('no_telepon_penerima');
             $table->string('tx_id')->unique();
             $table->timestamps();
         });

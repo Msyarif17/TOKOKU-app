@@ -238,9 +238,9 @@ return [
 
         
         [
-            'text' => 'Aplikasi Penjualan',
+            'text' => 'Aplikasi Barang Keluar',
             'icon' => 'fas fa-tv',
-            'url' => '#'
+            'url' => 'admin/aplikasi-penjualan'
         ],
         
         [
@@ -249,7 +249,67 @@ return [
             'url' => 'admin/aplikasi-barang-masuk'
         ],
         [
-            'text' => 'Barang',
+            'text' => 'Data Pegawai',
+            'icon' => 'fas fa-users',
+            'url' => '#'
+        ],
+        
+        [
+            'text' => 'Supplyer',
+            'url'  => 'admin/supplyer',
+            'icon' => 'fas fa-users',
+        ],
+        [
+            'text' => 'Transportasi',
+            'icon'=> 'fa fa-truck',
+            'submenu' =>  [
+                    [
+                        'text' => 'Kategori Transportasi',
+                        'url'  => 'admin/kategori-barang',
+                    ],
+                    [
+                        'text' => 'Data Transportasi',
+                        'url'  => 'admin/supplyer',
+                    ],
+                    [
+                        'text' => 'Data Supir',
+                        'url'  => 'admin/supplyer',
+                    ],
+                    
+                ]
+        ],
+        [
+            'text' => 'Manajemen Pekerjaan',
+            'icon'=> 'fa fa-tasks',
+            'submenu' =>  [
+                    [
+                        'text' => 'Deskripsi Pekerjaan',
+                        'url'  => 'admin/kategori-barang',
+                    ],
+                    [
+                        'text' => 'Data Pekerja',
+                        'url'  => 'admin/supplyer',
+                    ],
+                    
+                ]
+        ],
+        [
+            'text' => 'Manajemen Shift',
+            'icon'=> 'fa fa-clock',
+            'submenu' =>  [
+                    [
+                        'text' => 'Deskripsi Pekerjaan',
+                        'url'  => 'admin/kategori-barang',
+                    ],
+                    [
+                        'text' => 'Data Pekerja',
+                        'url'  => 'admin/supplyer',
+                    ],
+                    
+                ]
+        ],
+        [
+            'text' => 'Manajemen Barang',
             'icon'=> 'fa fa-boxes',
             'submenu' =>  [
                     [
@@ -271,11 +331,11 @@ return [
             'icon'=> 'fa fa-history',
             'submenu' =>  [
                     [
-                        'text' => 'Penjualan',
+                        'text' => 'Barang Keluar',
                         'url'  => '#',
                     ],
                     [
-                        'text' => 'Pembelian',
+                        'text' => 'Barang Masuk',
                         'url'  => '#',
                     ],
                 ]

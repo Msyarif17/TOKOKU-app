@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Kategori;
 use App\Models\Supplyer;
+use App\Models\DetailPenjualan;
 use App\Models\RiwayatPembelian;
 use App\Models\RiwayatPenjualan;
 use Illuminate\Database\Eloquent\Model;
@@ -47,8 +48,8 @@ class Barang extends Model
         return $this->belongsTo(Supplyer::class);
     }
     
-    public function riwayatPenjualan(){
-        return $this->hasMany(RiwayatPenjualan::class,'id_barang');
+    public function detailPenjualan(){
+        return $this->hasMany(DetailPenjualan::class);
     }
     
     public function riwayatPembelian(){
